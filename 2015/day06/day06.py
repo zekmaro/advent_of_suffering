@@ -39,7 +39,20 @@ def part1(data):
 
 
 def part2(data):
-	pass
+	grid = [[0] * 1000 for _ in range(1000)]
+	for instr in data:
+		for x in range(instr[1], instr[3] + 1):
+			for y in range(instr[2], instr[4] + 1):
+				if instr[0] == 'toggle':
+					grid[x][y] += 2
+				elif instr[0] == 'turn off':
+					grid[x][y] = max(0, grid[x][y] - 1)
+				elif instr[0] == 'turn on':
+					grid[x][y] += 1
+	
+	counter = sum(light for row in grid for light in row)
+	
+	return counter
 
 
 if __name__ == "__main__":

@@ -56,12 +56,17 @@ def part1():
 		solve(op[-1])
 	return cache['a']
 
-def part2():
-	pass
+def part2(a_value):
+	instructions["b"] = ("VALUE", str(a_value)) # this is very smart GPT is genuis
+	cache.clear()
+	for op in instructions:
+		solve(op[-1])
+	return cache['a']
 
 
 if __name__ == "__main__":
 	filename = 'input.txt'
 	read_data(filename)
-	print(part1())
-	print(part2())
+	a_value = part1()
+	print(a_value)
+	print(part2(a_value))

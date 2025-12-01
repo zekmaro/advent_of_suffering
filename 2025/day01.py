@@ -7,7 +7,7 @@ DAY = Path(__file__).stem  # "day01"
 # ---- INPUT LOADING ----------------------------------------------------------
 
 def read_input(example=False):
-    fname = f"inputs/{DAY}{'_example' if example else ''}.txt"
+    fname = f"inputs/{DAY}.txt"
     return Path(fname).read_text().strip()
 
 # ---- SOLUTION ---------------------------------------------------------------
@@ -22,17 +22,43 @@ def parse(data):
 
 
 def part1(data):
-    """
-    Solve part 1 using parsed data.
-    """
-    return None
+    pos = 50
+    count = 0
+
+    for rot in data:
+        dir = rot[0]
+        num = int(rot[1:])
+
+        if dir == 'R':
+            pos += num
+        else:
+            pos -= num
+
+        pos %= 100
+        if pos == 0:
+            count += 1
+
+    return count
 
 
 def part2(data):
-    """
-    Solve part 2 using parsed data.
-    """
-    return None
+    pos = 50
+    count = 0
+
+    for rot in data:
+        dir = rot[0]
+        num = int(rot[1:])
+
+        for _ in range(num):
+            if dir == 'R':
+                pos = (pos + 1) % 100
+            else:
+                pos = (pos - 1) % 100
+
+            if pos == 0:
+                count += 1
+
+    return(count)
 
 # ---- RUNNER ----------------------------------------------------------------
 

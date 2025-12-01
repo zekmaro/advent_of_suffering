@@ -7,7 +7,7 @@ DAY = Path(__file__).stem  # "day01"
 # ---- INPUT LOADING ----------------------------------------------------------
 
 def read_input(example=False):
-    fname = f"inputs/{DAY}.txt"
+    fname = f"inputs/{DAY}{'_example' if example else ''}.txt"
     return Path(fname).read_text().strip()
 
 # ---- SOLUTION ---------------------------------------------------------------
